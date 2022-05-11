@@ -1,0 +1,28 @@
+# kubectl describe psp eks.privileged              
+Warning: policy/v1beta1 PodSecurityPolicy is deprecated in v1.21+, unavailable in v1.25+
+Name:  eks.privileged
+
+Settings:
+  Allow Privileged:                       true
+  Allow Privilege Escalation:             true
+  Default Add Capabilities:               <none>
+  Required Drop Capabilities:             <none>
+  Allowed Capabilities:                   *
+  Allowed Volume Types:                   *
+  Allowed Unsafe Sysctls:                 net.ipv4.tcp_keepalive*
+  Allow Host Network:                     true
+  Allow Host Ports:                       0-65535
+  Allow Host PID:                         true
+  Allow Host IPC:                         true
+  Read Only Root Filesystem:              false
+  SELinux Context Strategy: RunAsAny      
+    User:                                 <none>
+    Role:                                 <none>
+    Type:                                 <none>
+    Level:                                <none>
+  Run As User Strategy: RunAsAny          
+    Ranges:                               <none>
+  FSGroup Strategy: RunAsAny              
+    Ranges:                               <none>
+  Supplemental Groups Strategy: RunAsAny  
+    Ranges:                               <none>
