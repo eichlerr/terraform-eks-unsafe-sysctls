@@ -1,3 +1,11 @@
+Note: This repository exists to show how to pass extra arguments to Kubelet as part of the EKS bootstrap script to enable following unsafe sysctls in accordance with the best practices recommendations for [RDS Fast Failover](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.BestPractices.html#AuroraPostgreSQL.BestPractices.FastFailover.TCPKeepalives).
+
+To deploy a working sample, from the `examples/node-groups/self-managed-node-groups` directory, run `terraform init`, then `terraform apply`.
+
+You'll also need to edit the default `eks.privileged` Pod Security Policy to allow the unsafe sysctls. The file `psp.eks.privileged.yaml` shows the allowed unsafe sysctls as `net.ipv4.tcp_keepalive*`
+
+The same directory includes a `ubuntu-pod.yaml` file that can be run on your cluster to validate the configuration. You can `exec` into the pod and check that the sysctls have been set.
+
 # Amazon EKS Blueprints for Terraform
 
 [![e2e-test](https://github.com/aws-ia/terraform-aws-eks-blueprints/actions/workflows/e2e-test.yml/badge.svg)](https://github.com/aws-ia/terraform-aws-eks-blueprints/actions/workflows/e2e-test.yml)
