@@ -96,7 +96,7 @@ module "eks_blueprints" {
         EOT
 
       post_userdata        = "" # Optional config
-      kubelet_extra_args   = "" # Optional config
+      kubelet_extra_args   = "--allowed-unsafe-sysctls=net.ipv4.tcp_keepalive*" # Optional config
       bootstrap_extra_args = "" # Optional config
 
       additional_iam_policies = [] # Attach additional IAM policies
@@ -106,20 +106,6 @@ module "eks_blueprints" {
           device_name = "/dev/xvda" # mount point to /
           volume_type = "gp3"
           volume_size = 50
-        },
-        {
-          device_name = "/dev/xvdf" # mount point to /local1 (it could be local2, depending upon the disks are attached during boot)
-          volume_type = "gp3"
-          volume_size = 80
-          iops        = 3000
-          throughput  = 125
-        },
-        {
-          device_name = "/dev/xvdg" # mount point to /local2 (it could be local1, depending upon the disks are attached during boot)
-          volume_type = "gp3"
-          volume_size = 100
-          iops        = 3000
-          throughput  = 125
         }
       ]
 
